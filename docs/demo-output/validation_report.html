@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Data Quality Report - customers</title>
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f6f7f9;
+      --panel: #ffffff;
+      --text: #1f2933;
+      --muted: #657080;
+      --border: #d9dee7;
+      --passed: #167a3d;
+      --failed: #b42318;
+      --soft-passed: #e8f5ee;
+      --soft-failed: #fdecec;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.5;
+    }
+    .page {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    header, section {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+    header p {
+      margin: 0 0 4px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    h1, h2, h3 { margin: 0; }
+    h1 { font-size: 30px; }
+    h2 { font-size: 20px; margin-bottom: 16px; }
+    h3 { font-size: 16px; margin-bottom: 8px; }
+    .status {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .status.passed {
+      background: var(--soft-passed);
+      color: var(--passed);
+    }
+    .status.failed {
+      background: var(--soft-failed);
+      color: var(--failed);
+    }
+    .summary-grid, .severity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 12px;
+    }
+    .metric {
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 12px;
+      min-width: 0;
+    }
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .metric strong {
+      display: block;
+      margin-top: 4px;
+      overflow-wrap: anywhere;
+      font-size: 18px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    th, td {
+      border-bottom: 1px solid var(--border);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      color: var(--muted);
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+    ul { margin: 0; padding-left: 20px; }
+    .severity li {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      max-width: 260px;
+      padding: 4px 0;
+    }
+    .check-failures {
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      margin-top: 12px;
+    }
+    .empty { color: var(--muted); margin: 0; }
+    @media (max-width: 700px) {
+      .page { padding: 20px 12px 36px; }
+      h1 { font-size: 24px; }
+      table { display: block; overflow-x: auto; }
+    }
+    </style>
+</head>
+<body>
+  <main class="page">
+    <header>
+      <p>Data Quality Starter Kit</p>
+      <h1>customers validation report</h1>
+      <span class="status failed">failed</span>
+    </header>
+    <section class="summary">
+      <h2>Executive summary</h2>
+      <div class="summary-grid">
+        <div class="metric"><span>Data file</span><strong>examples\customers_with_errors.csv</strong></div>
+        <div class="metric"><span>Rows</span><strong>11</strong></div>
+        <div class="metric"><span>Columns</span><strong>6</strong></div>
+        <div class="metric"><span>Checks</span><strong>7</strong></div>
+        <div class="metric"><span>Passed checks</span><strong>1</strong></div>
+        <div class="metric"><span>Failed checks</span><strong>6</strong></div>
+        <div class="metric"><span>Total failures</span><strong>10</strong></div>
+      </div>
+    </section>
+    <section class="severity">
+      <h2>Severity summary</h2>
+      <div class="severity-grid">
+        <div>
+          <h3>Failed checks by severity</h3>
+          <ul>
+            <li><span>critical</span><strong>2</strong></li>
+            <li><span>high</span><strong>3</strong></li>
+            <li><span>medium</span><strong>1</strong></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Failures by severity</h3>
+          <ul>
+            <li><span>critical</span><strong>4</strong></li>
+            <li><span>high</span><strong>4</strong></li>
+            <li><span>medium</span><strong>2</strong></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <section class="checks">
+      <h2>Check results</h2>
+      <table>
+        <thead>
+          <tr><th>Name</th><th>Type</th><th>Severity</th><th>Status</th><th>Failures</th></tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>required_columns_present</td>
+          <td>required_columns</td>
+          <td>critical</td>
+          <td><span class="status passed">passed</span></td>
+          <td>0</td>
+        </tr>
+        <tr>
+          <td>critical_fields_not_null</td>
+          <td>not_null</td>
+          <td>critical</td>
+          <td><span class="status failed">failed</span></td>
+          <td>3</td>
+        </tr>
+        <tr>
+          <td>email_has_valid_format</td>
+          <td>email_format</td>
+          <td>high</td>
+          <td><span class="status failed">failed</span></td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>status_is_accepted</td>
+          <td>accepted_values</td>
+          <td>high</td>
+          <td><span class="status failed">failed</span></td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>age_is_within_expected_range</td>
+          <td>numeric_range</td>
+          <td>medium</td>
+          <td><span class="status failed">failed</span></td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>customer_id_is_unique</td>
+          <td>unique</td>
+          <td>critical</td>
+          <td><span class="status failed">failed</span></td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>signup_date_is_not_future</td>
+          <td>not_future_date</td>
+          <td>high</td>
+          <td><span class="status failed">failed</span></td>
+          <td>1</td>
+        </tr>
+        </tbody>
+      </table>
+    </section>
+    <section class="failures">
+      <h2>Failure samples</h2>
+      <div class="check-failures">
+        <h3>critical_fields_not_null</h3>
+        <ul>
+          <li><strong>row 7, column full_name</strong> value=&#x27;&#x27; - Value is required.</li>
+          <li><strong>row 8, column email</strong> value=&#x27;&#x27; - Value is required.</li>
+          <li><strong>row 12, column customer_id</strong> value=&#x27;&#x27; - Value is required.</li>
+        </ul>
+      </div>
+      <div class="check-failures">
+        <h3>email_has_valid_format</h3>
+        <ul>
+          <li><strong>row 5, column email</strong> value=&#x27;carla.souza.example.com&#x27; - Email value has an invalid format.</li>
+          <li><strong>row 8, column email</strong> value=&#x27;&#x27; - Email value has an invalid format.</li>
+        </ul>
+      </div>
+      <div class="check-failures">
+        <h3>status_is_accepted</h3>
+        <ul>
+          <li><strong>row 6, column status</strong> value=&#x27;paused&#x27; - Value must be one of: active, inactive, prospect.</li>
+        </ul>
+      </div>
+      <div class="check-failures">
+        <h3>age_is_within_expected_range</h3>
+        <ul>
+          <li><strong>row 9, column age</strong> value=&#x27;16&#x27; - Value must be between 18 and 100.</li>
+          <li><strong>row 10, column age</strong> value=&#x27;121&#x27; - Value must be between 18 and 100.</li>
+        </ul>
+      </div>
+      <div class="check-failures">
+        <h3>customer_id_is_unique</h3>
+        <ul>
+          <li><strong>row 4, column customer_id</strong> value=&#x27;CUST-002&#x27; - Duplicate value first seen on row 3.</li>
+        </ul>
+      </div>
+      <div class="check-failures">
+        <h3>signup_date_is_not_future</h3>
+        <ul>
+          <li><strong>row 11, column signup_date</strong> value=&#x27;2026-12-01&#x27; - Date must not be after 2026-06-07.</li>
+        </ul>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

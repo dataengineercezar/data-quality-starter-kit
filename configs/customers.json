@@ -1,0 +1,79 @@
+{
+  "dataset": "customers",
+  "description": "Planned validation rules for customer CSV files.",
+  "file_type": "csv",
+  "required_columns": [
+    "customer_id",
+    "full_name",
+    "email",
+    "status",
+    "age",
+    "signup_date"
+  ],
+  "rules": [
+    {
+      "name": "required_columns_present",
+      "type": "required_columns",
+      "columns": [
+        "customer_id",
+        "full_name",
+        "email",
+        "status",
+        "age",
+        "signup_date"
+      ],
+      "severity": "critical"
+    },
+    {
+      "name": "critical_fields_not_null",
+      "type": "not_null",
+      "columns": [
+        "customer_id",
+        "full_name",
+        "email",
+        "status",
+        "age",
+        "signup_date"
+      ],
+      "severity": "critical"
+    },
+    {
+      "name": "email_has_valid_format",
+      "type": "email_format",
+      "column": "email",
+      "severity": "high"
+    },
+    {
+      "name": "status_is_accepted",
+      "type": "accepted_values",
+      "column": "status",
+      "values": [
+        "active",
+        "inactive",
+        "prospect"
+      ],
+      "severity": "high"
+    },
+    {
+      "name": "age_is_within_expected_range",
+      "type": "numeric_range",
+      "column": "age",
+      "min": 18,
+      "max": 100,
+      "severity": "medium"
+    },
+    {
+      "name": "customer_id_is_unique",
+      "type": "unique",
+      "column": "customer_id",
+      "severity": "critical"
+    },
+    {
+      "name": "signup_date_is_not_future",
+      "type": "not_future_date",
+      "column": "signup_date",
+      "date_format": "YYYY-MM-DD",
+      "severity": "high"
+    }
+  ]
+}

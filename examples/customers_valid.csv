@@ -1,0 +1,7 @@
+customer_id,full_name,email,status,age,signup_date
+CUST-001,Ana Martins,ana.martins@example.com,active,34,2024-02-12
+CUST-002,Bruno Silva,bruno.silva@example.com,active,41,2023-11-03
+CUST-003,Carla Souza,carla.souza@example.com,inactive,29,2022-07-21
+CUST-004,Diego Lima,diego.lima@example.com,prospect,23,2025-01-15
+CUST-005,Mariana Costa,mariana.costa@example.com,active,52,2021-09-30
+CUST-006,Rafael Pereira,rafael.pereira@example.com,inactive,45,2020-05-18
