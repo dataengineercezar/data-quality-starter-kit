@@ -156,19 +156,6 @@ Próximos aprimoramentos possíveis:
 
 Nenhuma dependência foi instalada ainda. Este repositório contém o esqueleto inicial do projeto, uma CLI mínima, carregamento de configuração, leitura de CSV, as primeiras checagens de validação, um contrato de resultados serializável, geração de relatório HTML simples, testes automatizados básicos e demo local de portfólio.
 
-### Revisão De Publicação Segura
-
-Revisão local executada em 2026-06-10:
-
-- testes automatizados: 9 testes OK com `python -B -m unittest discover -s tests -v`;
-- demo válida: `customers_valid.csv` retornou `passed`, 7 checks e 0 falhas;
-- demo com erros: `customers_with_errors.csv` retornou `failed`, 7 checks, 6 checks com falha e 10 falhas esperadas;
-- relatório e screenshot confirmados em `docs/demo-output/`;
-- busca redigida por sinais de segredo encontrou apenas falso positivo no checklist de publicação;
-- nenhum remoto Git foi configurado.
-
-Este projeto ainda não foi publicado. Criar remoto, fazer push ou publicar conteúdo exige autorização explícita.
-
 ### Caso De Demonstração
 
 O caso inicial valida um arquivo CSV de clientes antes que os dados sejam usados em relatórios, campanhas ou análises.
@@ -190,40 +177,6 @@ Screenshot da demo:
 ### Licença
 
 MIT. Veja `LICENSE`.
-
-### Plano De 7 Dias
-
-#### Dia 1: Definir O Caso De Demonstração
-
-Criar um cenário CSV realista para uma pequena empresa, como clientes, pedidos ou pagamentos. Definir o primeiro conjunto de regras de qualidade e a estrutura esperada do relatório.
-
-#### Dia 2: Criar A Base Do Projeto
-
-Implementar o layout do pacote, ponto de entrada básico de CLI, formato inicial de carregamento de configuração e arquivos de exemplo.
-
-#### Dia 3: Implementar Checagens Principais
-
-Adicionar as primeiras regras de validação: colunas obrigatórias, campos não nulos, unicidade, valores aceitos e intervalos numéricos.
-
-#### Dia 4: Estruturar Resultados
-
-Criar um modelo padrão de resultado com nome da checagem, status, severidade, quantidade de falhas, total de linhas e amostras de registros com erro.
-
-#### Dia 5: Gerar O Relatório
-
-Construir um relatório HTML simples com resumo executivo, detalhes por checagem e exemplos de linhas com falha.
-
-#### Dia 6: Adicionar Testes E Documentação
-
-Adicionar testes focados para as regras de validação e melhorar instruções de instalação, uso, premissas e limitações no README.
-
-#### Dia 7: Preparar Demo De Portfólio
-
-Polir o exemplo, executar o fluxo completo de validação, capturar prints ou saídas de exemplo e escrever uma narrativa curta explicando o valor de negócio.
-
-### Status Do Projeto
-
-Dia 7 concluído: CLI mínima, carregamento de configuração JSON, leitura de CSV, checagens principais, modelo de resultado, saída JSON serializável, relatório HTML simples, testes automatizados básicos e demo local de portfólio criados. O próximo passo é revisar o projeto como ativo público antes de qualquer publicação.
 
 ---
 
@@ -383,19 +336,6 @@ Possible next improvements:
 
 No dependencies are installed yet. This repository currently contains the initial project skeleton, a minimal CLI, config loading, CSV reading, the first validation checks, a serializable result contract, simple HTML report generation, basic automated tests, and a local portfolio demo.
 
-### Safe Publication Review
-
-Local review executed on 2026-06-10:
-
-- automated tests: 9 tests passed with `python -B -m unittest discover -s tests -v`;
-- valid demo: `customers_valid.csv` returned `passed`, 7 checks, and 0 failures;
-- error demo: `customers_with_errors.csv` returned `failed`, 7 checks, 6 failed checks, and 10 expected failures;
-- report and screenshot confirmed under `docs/demo-output/`;
-- redacted secret scan found only a false positive in the publication checklist;
-- no Git remote is configured.
-
-This project has not been published yet. Creating a remote, pushing, or publishing content requires explicit approval.
-
 ### Demo Case
 
 The initial demo case validates a customer CSV file before the data is used in reports, campaigns, or analysis.
@@ -417,37 +357,3 @@ Demo screenshot:
 ### License
 
 MIT. See `LICENSE`.
-
-### 7-Day Plan
-
-#### Day 1: Define The Demo Case
-
-Create a realistic CSV scenario for a small business, such as customers, orders, or payments. Define the first set of quality rules and the expected report structure.
-
-#### Day 2: Build The Project Foundation
-
-Implement the package layout, basic CLI entry point, config loading shape, and example files.
-
-#### Day 3: Implement Core Checks
-
-Add the first validation rules: required columns, not-null fields, uniqueness, accepted values, and numeric ranges.
-
-#### Day 4: Structure Results
-
-Create a standard result model with check name, status, severity, failure count, total rows, and sample failed records.
-
-#### Day 5: Generate The Report
-
-Build a simple HTML report with an executive summary, check-level details, and examples of failed rows.
-
-#### Day 6: Add Tests And Documentation
-
-Add focused tests for the validation rules and improve setup, usage, assumptions, and limitations in the README.
-
-#### Day 7: Prepare Portfolio Demo
-
-Polish the example, run the full validation flow, capture screenshots or sample output, and write a short narrative explaining the business value.
-
-### Project Status
-
-Day 7 completed: minimal CLI foundation, JSON config loading, CSV reading, core validation checks, result model, serializable JSON output, simple HTML report generation, basic automated tests, and a local portfolio demo are in place. The next step is to review the project as a public asset before any publication.
