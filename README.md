@@ -28,7 +28,7 @@ O primeiro MVP foca em um fluxo estreito, mas útil:
 
 - ler um ou mais arquivos CSV;
 - carregar regras de validação a partir de um arquivo de configuração;
-- suportar checagens básicas como colunas obrigatórias, campos não nulos, chaves únicas, valores aceitos, intervalos numéricos e quantidade de linhas;
+- suportar checagens básicas como colunas obrigatórias, campos não nulos, chaves únicas, valores aceitos, intervalos numéricos, formato de email e data futura;
 - retornar resultados estruturados de validação;
 - gerar um relatório HTML simples;
 - incluir dados de exemplo realistas;
@@ -144,13 +144,30 @@ Este MVP ainda não tenta resolver todos os cenários de qualidade de dados. Lim
 - sem dashboards;
 - sem perfilamento estatistico complexo;
 - sem suporte a multiplos formatos alem de CSV;
+- sem regra configuravel de contagem minima ou maxima de linhas;
 - sem publicacao ou servicos externos configurados.
 
-Saída esperada no futuro:
+Próximos aprimoramentos possíveis:
 
-- polimento final antes de publicação pública.
+- regra configuravel de contagem minima ou maxima de linhas;
+- suporte a multiplos arquivos em uma unica execucao;
+- conectores locais para bancos de dados;
+- integracao futura com orquestracao e observabilidade.
 
 Nenhuma dependência foi instalada ainda. Este repositório contém o esqueleto inicial do projeto, uma CLI mínima, carregamento de configuração, leitura de CSV, as primeiras checagens de validação, um contrato de resultados serializável, geração de relatório HTML simples, testes automatizados básicos e demo local de portfólio.
+
+### Revisão De Publicação Segura
+
+Revisão local executada em 2026-06-10:
+
+- testes automatizados: 9 testes OK com `python -B -m unittest discover -s tests -v`;
+- demo válida: `customers_valid.csv` retornou `passed`, 7 checks e 0 falhas;
+- demo com erros: `customers_with_errors.csv` retornou `failed`, 7 checks, 6 checks com falha e 10 falhas esperadas;
+- relatório e screenshot confirmados em `docs/demo-output/`;
+- busca redigida por sinais de segredo encontrou apenas falso positivo no checklist de publicação;
+- nenhum remoto Git foi configurado.
+
+Este projeto ainda não foi publicado. Criar remoto, fazer push ou publicar conteúdo exige autorização explícita.
 
 ### Caso De Demonstração
 
@@ -238,7 +255,7 @@ The first MVP will focus on a narrow but useful workflow:
 
 - read one or more CSV files;
 - load validation rules from a configuration file;
-- support basic checks such as required columns, not-null fields, unique keys, accepted values, numeric ranges, and row counts;
+- support basic checks such as required columns, not-null fields, unique keys, accepted values, numeric ranges, email format, and future dates;
 - return structured validation results;
 - generate a simple HTML report;
 - include realistic example data;
@@ -354,13 +371,30 @@ This MVP does not try to solve every data quality scenario. Current limitations:
 - no dashboards;
 - no complex statistical profiling;
 - no support for formats other than CSV;
+- no configurable minimum or maximum row-count rule yet;
 - no publication or external services configured.
 
-Expected future output:
+Possible next improvements:
 
-- final polishing before public publication.
+- configurable minimum or maximum row-count rule;
+- support for multiple files in a single run;
+- local database connectors;
+- future orchestration and observability integration.
 
 No dependencies are installed yet. This repository currently contains the initial project skeleton, a minimal CLI, config loading, CSV reading, the first validation checks, a serializable result contract, simple HTML report generation, basic automated tests, and a local portfolio demo.
+
+### Safe Publication Review
+
+Local review executed on 2026-06-10:
+
+- automated tests: 9 tests passed with `python -B -m unittest discover -s tests -v`;
+- valid demo: `customers_valid.csv` returned `passed`, 7 checks, and 0 failures;
+- error demo: `customers_with_errors.csv` returned `failed`, 7 checks, 6 failed checks, and 10 expected failures;
+- report and screenshot confirmed under `docs/demo-output/`;
+- redacted secret scan found only a false positive in the publication checklist;
+- no Git remote is configured.
+
+This project has not been published yet. Creating a remote, pushing, or publishing content requires explicit approval.
 
 ### Demo Case
 
